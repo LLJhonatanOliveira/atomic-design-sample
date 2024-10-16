@@ -29,7 +29,7 @@ type Story = StoryObj<typeof meta>;
 export const DefaultButton: Story = {
   args: {
     children: "Click Me",
-    variant: "danger",
+    variant: "outline",
     size: "small",
     disabled: false,
     type: "submit",
