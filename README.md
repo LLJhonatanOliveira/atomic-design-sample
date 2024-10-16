@@ -19,9 +19,10 @@ npm install
 ## Usage
 This project follows Atomic Design principles, consisting of three main types of components:
 
-Atoms: Smallest UI elements like buttons and text inputs.
-Molecules: Combinations of atoms, such as a text input with buttons.
-Organisms: Complex components that can include molecules and atoms, like a list with pagination.
+- Atoms: Smallest UI elements like buttons and text inputs.
+- Molecules: Combinations of atoms, such as a text input with buttons.
+- Organisms: Complex components that can include molecules and atoms, like a list with pagination.
+
 You can import and use these components in your React applications as needed.
 
 ## Starting Storybook
