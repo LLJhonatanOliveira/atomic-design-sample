@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextInput } from "../../atoms/TextInput";
 
 interface TextInputWithButtonProps {
@@ -8,7 +8,7 @@ interface TextInputWithButtonProps {
   size: "small" | "medium" | "large";
   placeholder?: string;
   buttonText: string;
-  onButtonClick: () => void;
+  onButtonClick: (value: string) => void;
   disabled?: boolean;
 }
 
@@ -22,6 +22,8 @@ export const TextInputWithButton: React.FC<TextInputWithButtonProps> = ({
   onButtonClick,
   disabled,
 }) => {
+  const [inputValue, setInputValue] = useState('')
+
   return (
     <div className="flex items-center space-x-2">
       <TextInput
@@ -31,9 +33,10 @@ export const TextInputWithButton: React.FC<TextInputWithButtonProps> = ({
         size={size}
         placeholder={placeholder}
         disabled={disabled}
+        onChange={(e) => setInputValue(e.target.value)}
       />
       <button
-        onClick={onButtonClick}
+        onClick={() => onButtonClick(inputValue)}
         className={`btn-${variant} ${size}`}
         disabled={disabled}
       >
