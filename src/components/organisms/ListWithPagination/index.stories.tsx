@@ -18,7 +18,7 @@ export const DefaultListWithPagination: Story = {
   render: Template,
   args: {
     items: sampleItems,
-    renderItem: (item) => <span>{item}</span>, 
+    renderItem: (item: any) => <span>{item}</span>, 
     itemsPerPage: 5,
   },
 };
