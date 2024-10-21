@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button } from "../../atoms/Button";
+
 
 interface ListWithPaginationProps<T> {
   items: T[];
@@ -36,15 +38,15 @@ export const ListWithPagination = <T,>({
         ))}
       </ul>
       <div className="flex justify-between mt-4">
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+        <Button onClick={handlePrevPage} disabled={currentPage === 1} variant="secondary">
           Previous
-        </button>
-        <span>
+        </Button>
+        <span className="mx-4">
           Page {currentPage} of {totalPages}
         </span>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+        <Button onClick={handleNextPage} disabled={currentPage === totalPages} variant="secondary">
           Next
-        </button>
+        </Button>
       </div>
     </div>
   );

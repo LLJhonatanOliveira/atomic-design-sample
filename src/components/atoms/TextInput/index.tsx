@@ -1,3 +1,4 @@
+import React from "react";
 import { useFormContext } from "react-hook-form";
 
 const inputVariants = {
@@ -24,6 +25,10 @@ export interface TextInputProps {
   variant: InputVariants;
   size: "small" | "medium" | "large";
   disabled?: boolean;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  error?: string;
+  type?: string;
 }
 
 export const TextInput = ({
@@ -33,8 +38,16 @@ export const TextInput = ({
   variant,
   size,
   disabled,
+  value,
+  onChange,
+  error,
+  type = "text",
 }: TextInputProps) => {
-  const { register } = useFormContext();
+  const { register } = useFormContext() || {};
+
+  const inputClassName = `${inputVariants[error ? "error" : variant]} ${inputSizes[size]} ${
+    disabled ? "bg-gray-200 cursor-not-allowed" : ""
+  }`;
 
   return (
     <div className="flex flex-col">
@@ -43,12 +56,13 @@ export const TextInput = ({
       </label>
       <input
         id={name}
-        {...register(name)}
-        className={`${inputVariants[variant]} ${inputSizes[size]} ${
-          disabled ? "bg-gray-200 cursor-not-allowed" : ""
-        }`}
+        type={type}
+        {...(register ? register(name) : {})} 
+        className={inputClassName}
         placeholder={placeholder}
         disabled={disabled}
+        value={value}
+        onChange={onChange} 
       />
     </div>
   );
